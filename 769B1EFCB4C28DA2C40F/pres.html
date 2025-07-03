@@ -1,49 +1,135 @@
 <!doctype html>
-<meta charset=utf-8>
-<meta name=viewport content="width=device-width,initial-scale=1">
-<link rel=stylesheet media='screen, print' href=../32397A31B653684D2259/BFAC314FEFDC07451AF1792A81CB.css>
-<meta name=robots content="noindex">
-<meta name=googlebot content="noindex">
-<title id=title>Tasbe7na - P</title>
+<html lang="en">
+<head>
+    <meta charset=utf-8>
+    <meta name=viewport content="width=device-width,initial-scale=1">
+    <link rel=stylesheet media='screen, print' href=../32397A31B653684D2259/BFAC314FEFDC07451AF1792A81CB.css>
+    <meta name=robots content="noindex">
+    <meta name=googlebot content="noindex">
+    <title id=title>Tasbe7na - Presentation</title>
+</head>
 <body id=slideShow>
     <h1 id=heading>
         Tasbe7na<br>تسبيحنا
     </h1>
-    <script src=../1C7198E0CE66AD27D983/BFAC314FEFDC07451AF1792A81CBA.js></script>
+    
+    <!-- MODIFIED SCRIPT -->
     <script>
-        (function() {
-            function c() {
-                var b = a.contentDocument || a.contentWindow.document;
-                if (b) {
-                    var d = b.createElement('script');
-                    d.innerHTML = "window.__CF$cv$params={r:'95417f119ed05409',t:'MTc1MDY1NTYwOC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";
-                    b.getElementsByTagName('head')[0].appendChild(d)
-                }
-            }
-            if (document.body) {
-                var a = document.createElement('iframe');
-                a.height = 1;
-                a.width = 1;
-                a.style.position = 'absolute';
-                a.style.top = 0;
-                a.style.left = 0;
-                a.style.border = 'none';
-                a.style.visibility = 'hidden';
-                document.body.appendChild(a);
-                if ('loading' !== document.readyState)
-                    c();
-                else if (window.addEventListener)
-                    document.addEventListener('DOMContentLoaded', c);
-                else {
-                    var e = document.onreadystatechange || function() {}
-                    ;
-                    document.onreadystatechange = function(b) {
-                        e(b);
-                        'loading' !== document.readyState && (document.onreadystatechange = e,
-                        c())
+    'use strict';
+    if (window.isSecureContext) {
+        document.addEventListener("contextmenu", e => {
+            e.preventDefault();
+        }, false);
+
+        document.addEventListener("DOMContentLoaded", function() {
+            const slideShow = document.getElementById("slideShow");
+            let currentFontSize = null;
+
+            // NEW: The message handler function, adapted from the original script.
+            function handleMessage(event) {
+                // For security, you could check event.origin here, but for this use case it's okay.
+                // if (event.origin !== "https://tasbe7na.com") return;
+                
+                if (event.data) {
+                    const command = JSON.stringify(event.data).replace(/"/g, '');
+                    slideShow.style.overflow = "auto";
+                    slideShow.style.cursor = "auto";
+                    slideShow.style.height = "unset !important";
+                    if (slideShow.children[0]) {
+                       slideShow.children[0].classList.remove("blank");
+                    }
+
+                    switch (command) {
+                        case "C7503AB487C392E8CBBE756FD7340BD8": // Blank screen
+                            slideShow.style.background = "black";
+                            slideShow.style.overflow = "hidden";
+                            if (slideShow.children[0]) {
+                                slideShow.children[0].classList.add("blank");
+                            }
+                            break;
+                        case "14029A1DDB21B1385070500F8CDACB19": // Black BG
+                            slideShow.style.background = "black";
+                             if (slideShow.children[0]) {
+                                slideShow.children[0].style.color = "white";
+                             }
+                            break;
+                        case "CC8D8CE7B9B4EC7F5ABD1A302F3B9B31": // White BG
+                            slideShow.style.background = "white";
+                            if (slideShow.children[0]) {
+                               slideShow.children[0].style.color = "black";
+                            }
+                            break;
+                        case "5f2abbd565f3096a322eb83ba54b8f03e": // Green BG
+                            slideShow.style.background = "green";
+                            if (slideShow.children[0]) {
+                               slideShow.children[0].style.color = "white";
+                            }
+                            break;
+                        case "2C59BB4E321DC7DBF9E89877569D1A2": // Zoom In
+                        case "C21B2F5B5A2176B89ECCAC7A510FE0": // Zoom Out
+                             if (slideShow.children[0]) {
+                                const currentSize = window.getComputedStyle(slideShow.children[0], null).getPropertyValue("font-size");
+                                const newSize = parseFloat(currentSize);
+                                currentFontSize = command === "2C59BB4E321DC7DBF9E89877569D1A2" ? newSize + 10 : newSize - 10;
+                                slideShow.children[0].style.fontSize = currentFontSize + "px";
+                             }
+                            break;
+                        case "AFB5304ED88DD1616F5B3EB6383C": // Reset Zoom
+                            if (slideShow.children[0]) {
+                               slideShow.children[0].style.fontSize = "calc(8vw + 1vh + 2vmin)";
+                            }
+                            break;
+                        default:
+                            if (command.startsWith("86ED7F4C1FC9746E61AEA716B0E89440")) {
+                                let content = command.replace("86ED7F4C1FC9746E61AEA716B0E89440", '');
+                                slideShow.innerHTML = content;
+                                if (currentFontSize !== null && slideShow.children[0]) {
+                                    slideShow.children[0].style.fontSize = currentFontSize + "px";
+                                }
+                                if (slideShow.scrollHeight > slideShow.clientHeight) {
+                                    let h1 = document.getElementsByTagName("h1")[0];
+                                    if (h1 && h1.style.height !== "100%") {
+                                        slideShow.children[0].style.height = "100%";
+                                        slideShow.children[0].style.cursor = "all-scroll";
+                                        let inner = h1.innerHTML;
+                                        h1.innerHTML = "<br>" + inner + "<br>\xA0<br>";
+                                    }
+                                }
+                                if (slideShow.children.length > 0 && slideShow.children[0].style.height === "100%") {
+                                    slideShow.scrollTo(0, 0);
+                                }
+                            }
+                            // NEW: Receive custom styles from the enhancer UI
+                            else if (command.startsWith("CUSTOM_STYLE:")) {
+                                const styleData = JSON.parse(command.replace("CUSTOM_STYLE:", ''));
+                                if (styleData.backgroundImage) {
+                                    slideShow.style.backgroundImage = `url(${styleData.backgroundImage})`;
+                                    slideShow.style.backgroundSize = 'cover';
+                                    slideShow.style.backgroundPosition = 'center center';
+                                } else {
+                                    slideShow.style.backgroundImage = 'none';
+                                }
+                                if (styleData.backgroundColor) {
+                                    slideShow.style.backgroundColor = styleData.backgroundColor;
+                                }
+                                if (styleData.color && slideShow.children[0]) {
+                                   slideShow.children[0].style.color = styleData.color;
+                                }
+                            }
+                            break;
                     }
                 }
             }
-        }
-        )();
+
+            // NEW: Set up the listener for messages from the parent window.
+            window.addEventListener("message", handleMessage, false);
+            
+            // NEW: Send a message to the opener to signal that this window is ready.
+            if(window.opener) {
+                window.opener.postMessage("PRESENTATION_READY", "*"); // Use a specific origin for production
+            }
+        });
+    }
     </script>
+</body>
+</html>
